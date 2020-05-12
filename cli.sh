@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if test $1 == "sniff"; then
+if test $1 && test $1 == "sniff"; then
 	COMMAND="vendor/bin/phpcs -s --colors";
     EXTENSIONS="--extensions=css,js,json,php,phtml";
 
@@ -21,7 +21,7 @@ if test $1 == "sniff"; then
     MAGENTO2_EXCLUDE="--exclude=Generic.Files.LineLength,Generic.PHP.DisallowShortOpenTag,Generic.PHP.Syntax";
     
     printf "\nTesting with Magento2 standard:\n";
-    $COMMAND $2 $EXTENSIONS --standard=Magento2;
+    $COMMAND $2 $EXTENSIONS --standard=Magento2 $MAGENTO2_EXCLUDE;
     printf "\nDONE!\n";
 
     EXTENSIONS="--extensions=xml";
