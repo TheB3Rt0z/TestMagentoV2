@@ -1,5 +1,24 @@
 #!/bin/bash
 
+if test $1 && test $1 == "build"; then
+    #composer update;
+    #bin/magento maintenance:enable;
+    bin/magento setup:upgrade;
+    bin/magento setup:di:compile;
+    #bin/magento setup:static-content:deploy;
+    #bin/magento setup:static-content:deploy en_US;
+    #bin/magento setup:static-content:deploy de_DE;
+    bin/magento indexer:reindex;
+    #bin/magento cache:clean;
+    bin/magento cache:flush;
+    #bin/magento maintenance:disable;
+fi
+
+if test $1 && test $1 == "pack-ipib"; then
+    cd app/code/Iways/PaypalInstalmentsBanners/;
+    zip -r iways_paypal-instalments-banners-1.0.1.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+fi
+
 if test $1 && test $1 == "sniff"; then
 	COMMAND="vendor/bin/phpcs -s --colors";
     EXTENSIONS="--extensions=css,js,json,php,phtml";
@@ -43,6 +62,6 @@ if test $1 && test $1 == "sniff"; then
     printf "\nTesting XML files with Magento2 standard:\n";
     $COMMAND $2 $EXTENSIONS --standard=Magento2 $MAGENTO2_EXCLUDE;
     printf "\nDONE!\n";
-fi;
+fi
 
 printf "\n";
