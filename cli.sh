@@ -1,17 +1,18 @@
 #!/bin/bash
 
 if test $1 && test $1 == "build"; then
+    chmod -R 777 .
     #composer update;
-    #bin/magento maintenance:enable;
+    bin/magento maintenance:enable;
     bin/magento setup:upgrade;
     bin/magento setup:di:compile;
     #bin/magento setup:static-content:deploy;
     #bin/magento setup:static-content:deploy en_US;
     #bin/magento setup:static-content:deploy de_DE;
     bin/magento indexer:reindex;
-    #bin/magento cache:clean;
+    bin/magento cache:clean;
     bin/magento cache:flush;
-    #bin/magento maintenance:disable;
+    bin/magento maintenance:disable;
 fi
 
 if test $1 && test $1 == "pack-ipib"; then
@@ -19,9 +20,14 @@ if test $1 && test $1 == "pack-ipib"; then
     zip -r iways_paypal-instalments-banners-1.0.1.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
 fi
 
+if test $1 && test $1 == "pack-ippp"; then
+    cd app/code/Iways/PayPalPlus/;
+    zip -r iways_paypalplus-1.3.1.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+fi
+
 if test $1 && test $1 == "sniff"; then
 	COMMAND="vendor/bin/phpcs -s --colors";
-    EXTENSIONS="--extensions=css,js,json,php,phtml";
+    EXTENSION="--extension=css,js,json,php,phtml";
 
 	PEAR_EXCLUDE="--exclude=Generic.PHP.DisallowShortOpenTag,Generic.Files.LineLength";
 	PEAR_EXCLUDE+=",PEAR.Commenting.ClassComment";
