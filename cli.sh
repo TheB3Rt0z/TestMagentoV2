@@ -27,7 +27,7 @@ fi
 
 if test $1 && test $1 == "sniff"; then
 	COMMAND="vendor/bin/phpcs -s --colors";
-    EXTENSION="--extension=css,js,json,php,phtml";
+    EXTENSIONS="--extensions=css,js,json,php,phtml";
 
 	PEAR_EXCLUDE="--exclude=Generic.PHP.DisallowShortOpenTag,Generic.Files.LineLength";
 	PEAR_EXCLUDE+=",PEAR.Commenting.ClassComment";
