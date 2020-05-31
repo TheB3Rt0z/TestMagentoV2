@@ -91,7 +91,9 @@
         {
             "type": "composer",
             "url": "https://repo.magento.com/"
-        }
+        }, {
+			"url": "https://github.com/i-ways/magento2-paypal-plus", "type": "vcs"
+		}
     ],
     "extra": {
         "magento-force": "override"
