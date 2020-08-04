@@ -68,4 +68,3 @@ atlassian*
 !/generated/.htaccess
 .DS_Store
 /.github/
-/vendor/
