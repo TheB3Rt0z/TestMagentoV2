@@ -21,7 +21,7 @@ fi
 
 if test $1 && test $1 == "pack-ipib"; then
     cd app/code/Iways/PaypalInstalmentsBanners/;
-    zip -r iways_paypal-instalments-banners-1.0.1.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+    zip -r iways_paypal-instalments-banners-1.0.2.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
 fi
 
 if test $1 && test $1 == "pack-ippp"; then
