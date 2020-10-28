@@ -33,6 +33,7 @@
         "magento/product-community-edition": "2.3.5-p1",
         "magento/sample-data-media": "100.3.*",
         "mageplaza/magento-2-german-language-pack": "dev-master",
+        "mageplaza/module-smtp": "^4.1",
         "paypal/rest-api-sdk-php": "^1.14"
     },
     "require-dev": {
