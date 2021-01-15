@@ -4,13 +4,13 @@ on: push
 
 jobs:
   super-lint:
-    name: [JOB_NAME]
+    name: JOB_NAME
     runs-on: ubuntu-latest
     steps:
-      - name: [1ST_STEP_NAME]
+      - name: 1ST_STEP_NAME
         uses: actions/checkout@v2
-      - name: [2ND_STEP_NAME]
+      - name: 2ND_STEP_NAME
         uses: github/super-linter@v3
         env:
           DEFAULT_BRANCH: dev # branch on which jobs should actually run..
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
