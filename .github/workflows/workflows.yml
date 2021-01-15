@@ -1,0 +1,16 @@
+name: "[WORKFLOW_NAME]"
+
+on: push
+
+jobs:
+  super-linter-v3: # see "uses" in 2nd step..
+    name: "[JOB_NAME]"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "[1ST_STEP_NAME]"
+        uses: actions/checkout@v2
+      - name: "[2ND_STEP_NAME]"
+        uses: github/super-linter@v3 # https://github.com/github/super-linter#super-linter
+        env:
+          DEFAULT_BRANCH: dev # branch on which jobs should actually have to run on "on" event(s)..
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
