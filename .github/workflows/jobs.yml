@@ -8,9 +8,9 @@ jobs:
   phpcs:
     name: PHP code sniffer
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: .
+    #defaults:
+      #run:
+        #working-directory: .
     steps:
       - name: "Checkout repository.."
         uses: actions/checkout@v2
