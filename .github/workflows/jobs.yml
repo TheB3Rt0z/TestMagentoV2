@@ -23,6 +23,7 @@ jobs:
       - name: "Installing with composer.."
         run: composer install
       - name: "Generating dummy configuration.."
+        run: cp ./app/etc/env.php.tst ./app/etc/env.php
         run: bin/magento setup:install
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
