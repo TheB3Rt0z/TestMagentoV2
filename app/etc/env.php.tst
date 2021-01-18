@@ -11,7 +11,7 @@ return [
         'connection' => [
             'default' => [
                 'host' => 'localhost',
-                'dbname' => 'test-magento2',
+                'dbname' => 'testdb',
                 'username' => 'root',
                 'password' => 'root',
                 'active' => '1',
