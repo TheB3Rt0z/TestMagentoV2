@@ -23,7 +23,7 @@ jobs:
       - name: "Installing with composer.."
         run: composer install
       - name: "Creating dummy database.."
-        run: mysql -uroot -h127.0.0.1 -proot -e 'CREATE DATABASE IF NOT EXISTS test-magento2;'
+        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test-magento2;'
       - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
       - name: "Installing Magento's setup.."
