@@ -5,8 +5,8 @@ on:
     branches: [dev, master]
 
 jobs:
-  phpcs:
-    name: PHP code sniffer
+  build:
+    name: Building Magento 2
     runs-on: ubuntu-latest
     #defaults:
       #run:
@@ -14,6 +14,21 @@ jobs:
     steps:
       - name: "Checkout repository.."
         uses: actions/checkout@v2
-      - name: "Testing against Magento2 coding standard.."
-        #uses: extdn/github-actions-m2/magento-coding-standard@master
-        run: ls -lisah
+      - name: "Updating with composer.."
+        run: composer update
+    #bin/magento maintenance:enable;
+    #bin/magento setup:upgrade;
+    #bin/magento setup:di:compile;
+    #bin/magento setup:static-content:deploy;
+    #bin/magento setup:static-content:deploy en_US;
+    #bin/magento setup:static-content:deploy de_DE;
+    #bin/magento indexer:reindex;
+    #bin/magento cache:clean;
+    #bin/magento cache:flush;
+    #bin/magento maintenance:disable;
+  phpcs:
+    name: PHP Code Sniffer    
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repository.."
+        uses: actions/checkout@v2
