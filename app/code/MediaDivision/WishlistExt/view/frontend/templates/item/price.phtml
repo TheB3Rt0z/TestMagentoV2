@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart $block */
+
+$item = $block->getItem();
+$product = $block->getProductItem();
+
+$price = $product->getFinalPrice($item->getQty());
+$formatPrice = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($price,2),true,false);
+$formatTotal = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($item->getQty()*$price,2),true,false);
+?>

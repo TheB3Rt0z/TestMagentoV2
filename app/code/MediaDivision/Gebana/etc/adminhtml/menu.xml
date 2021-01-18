@@ -1,0 +1,6 @@
+<?php xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+  <menu>
+    <add id="MediaDivision_Gebana::cleverreach_formular" title="CleverReach Formular" module="MediaDivision_Gebana" sortOrder="10" action="gebana/cleverreach/index" resource="MediaDivision_Gebana::cleverreach_formular" parent="Magento_Backend::stores"/>
+  </menu>
+</config>

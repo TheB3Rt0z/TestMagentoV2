@@ -1,0 +1,55 @@
+<?php
+
+namespace MediaDivision\WishlistExt\Mail;
+
+use Magento\Framework\App\TemplateTypesInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Mail\MessageInterface;
+use Magento\Framework\Mail\MessageInterfaceFactory;
+use Magento\Framework\Mail\TransportInterfaceFactory;
+use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Phrase;
+
+class MailTransportBuilder extends \Magento\Framework\Mail\Template\TransportBuilder
+{
+    protected $templateIdentifier;
+
+    protected $templateModel;
+
+    protected $templateVars;
+
+    protected $templateOptions;
+
+    protected $transport;
+
+    protected $templateFactory;
+
+    protected $objectManager;
+
+    protected $message;
+
+    protected $_senderResolver;
+
+    protected $mailTransportFactory;
+
+    private $messageFactory;
+
+    public function __construct(
+        FactoryInterface $templateFactory,
+        MessageInterface $message,
+        SenderResolverInterface $senderResolver,
+        ObjectManagerInterface $objectManager,
+        TransportInterfaceFactory $mailTransportFactory,
+        MessageInterfaceFactory $messageFactory = null
+    )
+    {
+        $this->templateFactory = $templateFactory;
+        $this->objectManager = $objectManager;
+        $this->_senderResolver = $senderResolver;
+        $this->mailTransportFactory = $mailTransportFactory;
+        $this->messageFactory = $messageFactory ?: $this->objectManager->get(MessageInterfaceFactory::class);
+        $this->message = $this->messageFactory->create();
+
+        parent::__construct($templateFactory, $message, $senderResolver, $objectManager, $mailTransportFactory, $this->messageFactory);
+    }
+}

@@ -1,0 +1,42 @@
+<?php xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="MediaDivision_WishlistExt::js/owner_participant.js"/>
+    </head>
+    <body>
+        <referenceBlock name="customer.wishlist">
+            <container name="top">
+                <block class="Magento\Framework\View\Element\Template" name="top12"
+                       template="MediaDivision_WishlistExt::item/orderdate.phtml"
+                       cacheable="false"/>
+                <block class="Magento\Framework\View\Element\Template" name="top13"
+                       template="MediaDivision_WishlistExt::item/wishlist_comment.phtml"
+                       cacheable="false"/>
+            </container>
+            <referenceBlock name="customer.wishlist.items" template="MediaDivision_WishlistExt::item/list.phtml">
+
+<!--                <referenceBlock name="customer.wishlist.item.comment" remove="true" />-->
+                <referenceBlock name="customer.wishlist.item.comment" template="MediaDivision_WishlistExt::item/comment.phtml" />
+
+                <referenceBlock name="customer.wishlist.item.price" template="MediaDivision_WishlistExt::item/price.phtml" />
+                <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="mediadivision.wishlistext.quantity" as="quantity"
+                       template="MediaDivision_WishlistExt::item/quantity.phtml" after="customer.wishlist.item.price">
+                    <arguments>
+                        <argument name="allowedQuantityViewModel" xsi:type="object">Magento\Wishlist\ViewModel\AllowedQuantity</argument>
+                        <argument name="wishlistItemColumnViewModel" xsi:type="object">MediaDivision\WishlistExt\ViewModel\WishlistItemColumn</argument>
+                    </arguments>
+                </block>
+                <block class="MediaDivision\WishlistExt\Block\Participants" name="mediadivision.wishlistext.participants" as="participants"
+                       template="MediaDivision_WishlistExt::item/owner_participants.phtml" after="customer.wishlist.item.comment"/>
+
+                <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Info"
+                       name="customer.wishlist.item.productslinks" template="MediaDivision_WishlistExt::item/productslinks.phtml" after="participants" cacheable="false"/>
+
+            </referenceBlock>
+        </referenceBlock>
+
+        <move element="customer.wishlist.item.actions" destination="customer.wishlist.items" />
+        <move element="customer.wishlist.item.comment" destination="customer.wishlist.items" before="customer.wishlist.item.name"/>
+        <referenceBlock name="customer.wishlist.item.inner" remove="true"/>
+    </body>
+</page>

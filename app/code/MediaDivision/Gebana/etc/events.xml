@@ -1,0 +1,16 @@
+<?php xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="payment_method_is_active">
+        <observer name="md_payment_method_is_active" instance="MediaDivision\Gebana\Observer\PaymentMethodIsActive" />
+    </event>
+    <event name="catalog_product_save_after">
+        <observer name="md_catalog_product_save_after" instance="MediaDivision\Gebana\Observer\ProductSaveAfter"/>
+    </event>
+</config>

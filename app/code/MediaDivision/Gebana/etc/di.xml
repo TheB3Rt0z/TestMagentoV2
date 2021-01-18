@@ -1,0 +1,21 @@
+<?php xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <type name="Magento\Framework\Console\CommandList">
+    <arguments>
+      <argument name="commands" xsi:type="array">
+        <item name="import_products" xsi:type="object">MediaDivision\Gebana\Console\Command\ImportProducts</item>
+        <item name="import_oldshop" xsi:type="object">MediaDivision\Gebana\Console\Command\ImportOldshop</item>
+        <item name="create_passwordreset" xsi:type="object">MediaDivision\Gebana\Console\Command\CreatePasswordreset</item>
+        <item name="import_customers" xsi:type="object">MediaDivision\Gebana\Console\Command\ImportCustomers</item>
+        <item name="import_redirects" xsi:type="object">MediaDivision\Gebana\Console\Command\ImportRedirects</item>
+        <item name="customer_cleverreach" xsi:type="object">MediaDivision\Gebana\Console\Command\CustomerCleverreach</item>
+      </argument>
+    </arguments>
+  </type>
+  <preference for="Magento\OfflinePayments\Model\Purchaseorder" type="MediaDivision\Gebana\Model\Purchaseorder"/>
+  <preference for="Magento\Store\App\Response\Redirect" type="MediaDivision\Gebana\App\Response\Redirect"/>
+  <preference for="Magento\Checkout\Controller\Cart\UpdateItemQty" type="MediaDivision\Gebana\Controller\Cart\UpdateItemQty"/>
+  <preference for="Magento\Backend\Controller\Adminhtml\Auth\Login" type="MediaDivision\Gebana\Controller\Adminhtml\Auth\Login"/>
+  <preference for="Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid" type="MediaDivision\Gebana\Block\Adminhtml\Order\Create\Search\Grid"/>
+  <preference for="Magento\Customer\Controller\Adminhtml\Index\ResetPassword" type="MediaDivision\Gebana\Controller\Adminhtml\Index\ResetPassword"/>
+</config>

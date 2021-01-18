@@ -1,0 +1,41 @@
+<?php $wishlist = $block->getLayout()->getBlock('customer.wishlist')->getWishlistInstance(); ?>
+
+<div>
+    <?php echo $block->escapeHtmlAttr(__($wishlist->getWishlistName())) ?><br /><br />
+</div>
+
+<?php $orderDate = $wishlist->getOrderDate() ? date('d.m.Y', strtotime($wishlist->getOrderDate())) : ''; ?>
+
+<div class="field date">
+    <label for="date"
+           class="label"><span><?php echo $block->escapeHtml(__('Geplantes Datum der Bestellung')) ?></span></label>
+    <div class="control">
+        <?php echo
+        $block->getLayout()->createBlock('Magento\Framework\View\Element\Html\Date')
+        ->setData(
+            [
+                'name' => 'order_date',
+                'id' => 'date',
+                'value' => $block->escapeHtmlAttr($orderDate),
+                'date_format' => 'dd.MM.y',
+                'image' => $this->getViewFileUrl('Magento_Theme::calendar.png'),
+                'years_range' => '-120y:c+nn',
+                'max_date' => '+365d',
+                'change_month' => 'true',
+                'change_year' => 'true',
+                'show_on' => 'both',
+                'first_day' => 1
+                ]
+        )
+        ->toHtml()
+        ?>
+    </div>
+</div>
+
+<?php if ($wishlist->getItemsCount()): ?>
+
+<?php endif; ?>
+
+<style>
+    .multiple-wishlist-box-wrapper.main {display:none}
+</style>

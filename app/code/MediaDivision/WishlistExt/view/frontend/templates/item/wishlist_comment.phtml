@@ -1,0 +1,20 @@
+<?php $wishlist = $block->getLayout()->getBlock('customer.wishlist')->getWishlistInstance(); ?>
+
+<?php $comment = $wishlist->getComment(); ?>
+<div class="field comment">
+    <label for="date" class="label"><span><?php echo $block->escapeHtml(__('Comment')) ?></span></label>
+    <div class="control">
+    <textarea id="wishlist-comment" placeholder="<?php echo $block->escapeHtml(__('Comment')) ?>"
+              name="comment" title="<?php echo $block->escapeHtml(__('Comment')) ?>"
+              class="wishlist-comment"><?php echo $comment ?></textarea>
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+<?php if ($wishlist->getItemsCount()): ?>
+
+<?php endif; ?>
+
+

@@ -1,0 +1,9 @@
+<?php xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+    <title>CleverReach - Index</title>
+  </head>
+  <referenceContainer name="content">
+    <block class="MediaDivision\Gebana\Block\Adminhtml\CleverReach\Index" name="gebana_cleverreach_index" template="MediaDivision_Gebana::index.phtml"/>
+  </referenceContainer>
+</page>

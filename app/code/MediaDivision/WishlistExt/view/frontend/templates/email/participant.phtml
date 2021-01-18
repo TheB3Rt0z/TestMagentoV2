@@ -1,0 +1,19 @@
+<?php $participant = $this->getData('participant'); ?>
+
+<div>
+
+    <br /><br /><br /><br />
+    <h4><?php echo __('Jemand hat sich an Ihrer Bestellung beteiligt.'); ?></h4>
+    <br /><br />
+    <span><?php echo $participant['firstname'] . ' ' . $participant['lastname'] ?> <?php echo __('hat sich soeben an Ihrer Bestellung beteiligt!'); ?></sspan>
+    <br />
+    <a href="https://www.gebana.de/shop/de-de/wishlist/index"><?php echo __('Hier'); ?></a> <?php echo __('können Sie Ihre Bestellung einsehen und die Freunde, die sich daran beteiligen.'); ?>
+    <br /><br /><br />
+    <?php echo __('Freundliche Grüße'); ?>
+    <br /><br />
+    <?php echo __('Ihr gebana Team'); ?>
+    <br /><br /><br />
+    <?php // $participant['email'] ? '('.$participant['email'].')' : '' ?>
+    <?php // $participant['qty'] ?>
+
+</div>

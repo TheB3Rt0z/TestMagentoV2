@@ -1,0 +1,6 @@
+<?php xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+  <menu>
+    <add id="MediaDivision_Campaigns::marketing_campaign" title="Marketing Campaign" module="MediaDivision_Campaigns" sortOrder="10" action="campaigns/campaign/grid" resource="MediaDivision_Campaigns::marketing_campaign" parent="MediaDivision_Basics::mediadivision"/>
+  </menu>
+</config>

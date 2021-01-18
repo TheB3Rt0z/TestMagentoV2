@@ -1,0 +1,23 @@
+<?php xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="MediaDivision\WishlistExt\Helper\ParticipantRepository">
+        <arguments>
+            <argument name="resourceConnection" xsi:type="object">Magento\Framework\App\ResourceConnection</argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Wishlist\Block\Customer\Sharing" type="MediaDivision\WishlistExt\Block\Sharing"/>
+
+    <type name="Magento\Wishlist\Controller\Index\Update">
+        <plugin name="update_wishlist_ext" type="MediaDivision\WishlistExt\Plugin\UpdateWishlist" sortOrder="1"/>
+    </type>
+
+    <type name="Magento\Wishlist\Model\Item">
+        <plugin name="update_wishlist_item" type="MediaDivision\WishlistExt\Plugin\WishlistItem" sortOrder="1"/>
+    </type>
+
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="AddAttPlug" type="MediaDivision\WishlistExt\Plugin\CheckoutConfigProviderPlugin" />
+    </type>
+
+    <preference for="Magento\Wishlist\Controller\Index\Send" type="MediaDivision\WishlistExt\Rewrite\SendWishlist" />
+</config>

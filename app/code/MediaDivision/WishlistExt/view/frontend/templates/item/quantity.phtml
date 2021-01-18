@@ -1,0 +1,95 @@
+<?php
+/**
+ * @var \MediaDivision\WishlistExt\Block\Quantity $block
+ */
+
+/**
+ * @var \Magento\Wishlist\Model\Item $item
+ */
+$item = $block->getItem();
+$product = $item->getProduct();
+/**
+ * @var \Magento\Wishlist\ViewModel\AllowedQuantity $viewModel
+*/
+$viewModel = $block->getData('allowedQuantityViewModel');
+$wishlistItemColumnViewModel = $block->getData('wishlistItemColumnViewModel');
+$allowedQty = $viewModel->setItem($item)->getMinMaxQty();
+
+$price = $product->getFinalPrice($item->getQty());
+$formatPrice = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($price, 2), true, false);
+$formatTotal = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency(number_format($item->getQty()*$price, 2), true, false);
+
+?>
+
+
+
+<div class="wishlist-price-box">
+
+
+
+    <?php if ($item->canHaveQty() && $product->isVisibleInSiteVisibility()): ?>
+        <div class="field field-owner-qty">
+            <label class="w_label" for="owner_qty[<?php echo $block->escapeHtmlAttr($item->getId()) ?>]"><span><?php echo $block->escapeHtml(__('Owner Qty')) ?></span></label>
+            <div class="control">
+                <input type="number" data-role="qty" id="qty[<?php echo $block->escapeHtmlAttr($item->getId()) ?>]" class="input-text qty"
+                       data-validate="{'required-number':true,'validate-greater-than-zero':true, 'validate-item-quantity':{'minAllowed':<?php echo /* @noEscape */ $allowedQty['minAllowed'] ?>,'maxAllowed':<?php echo /* @noEscape */ $allowedQty['maxAllowed'] ?>}}"
+                       name="qty[<?php echo $block->escapeHtmlAttr($item->getId()) ?>]"
+                       value="<?php echo /* @noEscape */ (int)($block->getAddToCartQty($item) * 1) ?>" <?php echo $product->isSaleable() ? '' : 'disabled="disabled"' ?>>
+
+            </div>
+        </div>
+        <div class="field field-particip-qty ">
+            <label class="w_label" for="qty[<?php echo $block->escapeHtmlAttr($item->getId()) ?>]"><span><?php echo $block->escapeHtml(__('Qty')) ?></span></label>
+            <div class="control">
+                <div class="fake-input">
+                    <?php echo (int)($item->getOwnerQty() * 1); ?>
+                </div>
+
+                <input style="display: none" type="number" data-role="owner_qty" id="owner_qty[<?php echo $block->escapeHtmlAttr($item->getId()) ?>]" class="input-text owner_qty" data-validate="{'required-number':true,'validate-greater-than-zero':true, 'validate-item-quantity':{'minAllowed':<?php echo /* @noEscape */ $allowedQty['minAllowed'] ?>,'maxAllowed':<?php echo /* @noEscape */ $allowedQty['maxAllowed'] ?>}}"
+                       name="owner_qty[<?php echo $block->escapeHtmlAttr($item->getId()) ?>]" value="<?php echo /* @noEscape */ (int)($wishlistItemColumnViewModel->getOwnerQty($item) * 1) ?>" <?php echo $product->isSaleable() ? '' : 'disabled="disabled"' ?>>
+
+            </div>
+        </div>
+    <?php endif; ?>
+
+
+
+      <div class="field field-price">
+        <label class="w_label"><span><?php echo $block->escapeHtml(__('Preis')) ?></span></label>
+        <div class="control">
+          <div class="fake-input">
+            <?php echo $formatPrice; ?>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field field-total">
+        <label class="w_label"><span><?php echo $block->escapeHtml(__('Summe')) ?></span></label>
+        <div class="control">
+          <div class="fake-input">
+            <?php echo $formatTotal; ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="field field-units">
+        <label class="w_label"><span><?php echo $block->escapeHtml(__('Units')) ?></span></label>
+        <div class="control">
+          <div class="fake-input">
+              <?php echo  $product->getResource()->getAttribute('base_price_unit')->getFrontend()->getValue($product); ?>
+          </div>
+        </div>
+      </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
