@@ -23,7 +23,7 @@ jobs:
       - name: "Installing with composer.."
         run: composer install
       - name: "Creating dummy database.." # https://github.com/marketplace/actions/setup-mysql
-        run: sudo apt-get install mysql-server | mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS test-magento2;"
+        run: sudo apt-get install mysql-server | sudo service mysql start | mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS test-magento2;"
       - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
       - name: "Installing Magento's setup.."
