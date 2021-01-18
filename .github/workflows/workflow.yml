@@ -30,10 +30,10 @@ jobs: # can be executed parallely, if more than a single one..
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
-          body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+          username: ${{secrets.EMAIL_USERNAME}}
+          password: ${{secrets.EMAIL_PASSWORD}}
+          subject: ${{github.job}} job of ${{github.repository}} has ${{job.status}}
+          body: ${{github.job}} job in worflow ${{github.workflow}} of ${{github.repository}} has ${{job.status}}
           to: bertozzi@i-ways.net,matteo.bertoz@gmail.com
           from: Your friendly GitHub Actions Workflow  
           
