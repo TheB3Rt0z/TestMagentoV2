@@ -11,9 +11,9 @@ return [
         'connection' => [
             'default' => [
                 'host' => 'localhost',
-                'dbname' => 'test-magento-v2',
+                'dbname' => 'test-magento2',
                 'username' => 'root',
-                'password' => '',
+                'password' => 'root',
                 'active' => '1',
                 'driver_options' => [
                     1014 => false
