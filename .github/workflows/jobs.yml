@@ -9,7 +9,7 @@ jobs:
     name: Building Magento 2
     runs-on: ubuntu-latest
     services:
-      mysql:
+      testdb:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: root
@@ -32,7 +32,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y mysql-client
-          mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS 'testdb'"
+          mysql -uroot -proot -htestdb -e "CREATE DATABASE IF NOT EXISTS 'testdb'"
       - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
       - name: "Installing Magento's setup.."
