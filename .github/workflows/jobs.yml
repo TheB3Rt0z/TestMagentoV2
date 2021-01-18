@@ -20,8 +20,10 @@ jobs:
           #extensions:
       - name: "Checkout repository.."
         uses: actions/checkout@v2
-      - name: "Updating with composer.."
-        run: composer update
+      - name: "Installing with composer.."
+        run: composer install
+      - name: "Generating dummy configuration.."
+        run: bin/magento setup:install
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
 #bin/magento setup:di:compile;
