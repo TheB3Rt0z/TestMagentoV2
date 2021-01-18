@@ -15,7 +15,7 @@ jobs:
       - name: "Setting up PHP.."
         uses: shivammathur/setup-php@v2 # https://github.com/shivammathur/setup-php
         with:
-          php-version: '7.3'
+          php-version: "7.3"
           tools: composer:v1
           #extensions:
       - name: "Checkout repository.."
@@ -23,21 +23,17 @@ jobs:
       - name: "Installing with composer.."
         run: composer install
       - name: "Creating dummy database.."
-        run: mysql -uroot -proot -e 'CREATE DATABASE IF NOT EXISTS test-magento2;'
+        run: apt-get install mysql-server | mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS test-magento2;"
       - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
       - name: "Installing Magento's setup.."
         run: bin/magento setup:install
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
-#bin/magento setup:di:compile;
-#bin/magento setup:static-content:deploy;
-#bin/magento setup:static-content:deploy en_US;
-#bin/magento setup:static-content:deploy de_DE;
-#bin/magento indexer:reindex;
-#bin/magento cache:clean;
-#bin/magento cache:flush;
-#bin/magento maintenance:disable;
+      - name: "Compiling Magento's code.."
+        run: bin/magento setup:di:compile;
+      - name: "Deploying static content.."
+        run: bin/magento setup:static-content:deploy;
   phpcs:
     name: PHP Code Sniffer    
     runs-on: ubuntu-latest
