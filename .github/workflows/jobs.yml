@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: "Updating with composer.."
         run: composer update
+        with:
+          php-version: "7.3"
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
     #bin/magento setup:di:compile;
