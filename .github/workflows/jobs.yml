@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./app/code/MediaDivision
+        working-directory: .
     steps:
       - name: "Checkout repository.."
         uses: actions/checkout@v2
       - name: "Testing against Magento2 coding standard.."
-        uses: extdn/github-actions-m2/magento-coding-standard@master
+        #uses: extdn/github-actions-m2/magento-coding-standard@master
+        run: ls -lisah
