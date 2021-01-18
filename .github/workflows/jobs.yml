@@ -26,15 +26,16 @@ jobs:
           #extensions:
       - name: "Checkout repository.."
         uses: actions/checkout@v2
-      - name: "Installing with composer.."
-        run: composer install
       - name: "Creating dummy database.." # https://github.com/marketplace/actions/setup-mysql
         run: |
           sudo apt-get update
           sudo apt-get install -y mysql-client
+          sudo service testdb start
           mysql -uroot -proot -htestdb -e "CREATE DATABASE IF NOT EXISTS 'testdb'"
       - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
+      - name: "Installing with composer.."
+        run: composer install
       - name: "Installing Magento's setup.."
         run: bin/magento setup:install
       - name: "Upgrading Magento's setup.."
