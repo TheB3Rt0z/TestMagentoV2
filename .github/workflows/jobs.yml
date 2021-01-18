@@ -12,20 +12,25 @@ jobs:
       #run:
         #working-directory: .
     steps:
+      - name: "Setting up PHP.."
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.3'
+          #extensions:
       - name: "Checkout repository.."
         uses: actions/checkout@v2
       - name: "Updating with composer.."
         run: composer update
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
-    #bin/magento setup:di:compile;
-    #bin/magento setup:static-content:deploy;
-    #bin/magento setup:static-content:deploy en_US;
-    #bin/magento setup:static-content:deploy de_DE;
-    #bin/magento indexer:reindex;
-    #bin/magento cache:clean;
-    #bin/magento cache:flush;
-    #bin/magento maintenance:disable;
+#bin/magento setup:di:compile;
+#bin/magento setup:static-content:deploy;
+#bin/magento setup:static-content:deploy en_US;
+#bin/magento setup:static-content:deploy de_DE;
+#bin/magento indexer:reindex;
+#bin/magento cache:clean;
+#bin/magento cache:flush;
+#bin/magento maintenance:disable;
   phpcs:
     name: PHP Code Sniffer    
     runs-on: ubuntu-latest
