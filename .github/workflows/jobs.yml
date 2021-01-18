@@ -8,6 +8,14 @@ jobs:
   build:
     name: Building Magento 2
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+        - 32574:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     #defaults:
       #run:
         #working-directory: .
@@ -23,7 +31,9 @@ jobs:
       - name: "Installing with composer.."
         run: composer install
       - name: "Creating dummy database.." # https://github.com/marketplace/actions/setup-mysql
-        run: sudo apt-get install mysql-server | sudo service mysql start | mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS test-magento2;"
+        run: |
+          sudo apt-get install -y mysql-client
+          mysql --host 127.0.0.1 --port 32574 -uroot -proot -e "CREATE DATABASE IF NOT EXISTS test-magento2;"
       - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
       - name: "Installing Magento's setup.."
