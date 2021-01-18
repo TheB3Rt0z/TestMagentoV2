@@ -1,9 +1,0 @@
-<?php xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-  <head>
-    <title>Index - Save</title>
-  </head>
-  <referenceContainer name="content">
-    <block class="MediaDivision\DeliveryRequest\Block\Index\Save" name="deliveryrequest_index_save" template="MediaDivision_DeliveryRequest::save.phtml"/>
-  </referenceContainer>
-</page>
