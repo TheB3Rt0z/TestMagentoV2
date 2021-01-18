@@ -30,7 +30,7 @@ jobs:
         run: composer install
       - name: "Creating dummy database.." # https://github.com/marketplace/actions/setup-mysql
         run: |
-          apt-get update
+          sudo apt-get update
           apt-get install -y mysql-client
           mysql --host testdb -uroot -proot -e "CREATE DATABASE IF NOT EXISTS 'testdb'"
       - name: "Copying dummy configuration.."
