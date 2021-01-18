@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: "Updating with composer.."
         run: composer update
-    #bin/magento maintenance:enable;
-    #bin/magento setup:upgrade;
+      - name: "Upgrading Magento's setup.."
+        run: bin/magento setup:upgrade
     #bin/magento setup:di:compile;
     #bin/magento setup:static-content:deploy;
     #bin/magento setup:static-content:deploy en_US;
