@@ -22,8 +22,9 @@ jobs:
         uses: actions/checkout@v2
       - name: "Installing with composer.."
         run: composer install
-      - name: "Generating dummy configuration.."
+      - name: "Copying dummy configuration.."
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
+      - name: "Installing Magento's setup.."
         run: bin/magento setup:install
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
