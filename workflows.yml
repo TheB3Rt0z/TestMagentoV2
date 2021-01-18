@@ -1,0 +1,31 @@
+name: "[WORKFLOW_NAME]" # this is optional.. see complete syntax at https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpaths
+
+on: push # but also pull_request, eventually in combination: [push, pull_request], and schedule: https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#onschedule
+  # release, but see also paths and path-ignore..
+    # types: [created, published, edited]
+
+jobs: # can be executed parallely, if more than a single one..
+  super-linter-v3: # see "uses" in 2nd step..
+    name: "[JOB_NAME]"
+    runs-on: ubuntu-latest # virtual machine os, see https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    steps:
+      - name: "[1ST_STEP_NAME]" # - identifies step begin, name property is anyway optional..
+        uses: actions/checkout@v2 # see also actions/setup-node@v1 in order to access node software on virtual machine, if running npm is needed..
+      - name: "[2ND_STEP_NAME]"
+        uses: github/super-linter@v3 # https://github.com/github/super-linter#super-linter
+      - name: "[3RD:STEP_NAME]" # Magento 2 Coding Standard TEST
+        # shell: bash (in order to run scripts like in a CLI)
+        # run: for example: npm install -g bats || bats -v (see uses above..)
+        uses: extdn/github-actions-m2/magento-coding-standard@master # see https://github.com/extdn/github-actions-m2
+    env: # environment variables
+      DEFAULT_BRANCH: dev # branch on which jobs should actually have to run on "on" event(s)..
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          
+# additional appetizing resources (better than jenkins pipelines):
+  # events reference: https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows
+  # DEFAULT environament variables: https://docs.github.com/en/free-pro-team@latest/actions/reference/environment-variables#default-environment-variables
+  # workflow templates: [REPO_URL]/actions/new, templates code: https://github.com/actions/starter-workflows
+    # https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/sharing-workflows-with-your-organization
+  # about security: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/security-hardening-for-github-actions
+
+# SPECIAL: https://github.com/sdras/awesome-actions

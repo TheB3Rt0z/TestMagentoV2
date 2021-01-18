@@ -33,6 +33,7 @@
         "magento/product-community-edition": "2.3.5-p1",
         "magento/sample-data-media": "100.3.*",
         "mageplaza/magento-2-german-language-pack": "dev-master",
+        "mageplaza/module-smtp": "^4.1",
         "paypal/rest-api-sdk-php": "^1.14"
     },
     "require-dev": {
@@ -40,7 +41,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
         "friendsofphp/php-cs-fixer": "~2.14.0",
         "lusitanian/oauth": "~0.8.10",
-        "magento/magento-coding-standard": "^5.0",
+        "magento/magento-coding-standard": "*",
         "magento/magento2-functional-testing-framework": "~2.6.4",
         "pdepend/pdepend": "2.5.2",
         "phpcompatibility/php-compatibility": "^9.3",
@@ -91,17 +92,11 @@
         {
             "type": "composer",
             "url": "https://repo.magento.com/"
-        }
+        }, {
+			"url": "https://github.com/i-ways/magento2-paypal-plus", "type": "vcs"
+		}
     ],
     "extra": {
         "magento-force": "override"
-    },
-    "scripts": {
-	    "post-install-cmd": [
-	      "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
-	    ],
-	    "post-update-cmd": [
-	      "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
-	    ]
-	}
+    }
 }
