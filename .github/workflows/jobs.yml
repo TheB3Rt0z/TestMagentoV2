@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: docker://mysql:5.7
+        #image: docker://mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: testdb
-        ports:
-          - 3106:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        #ports:
+          #- 3106:3306
+        #options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     #defaults:
       #run:
         #working-directory: .
@@ -33,8 +33,8 @@ jobs:
         run: cp ./app/etc/env.php.tst ./app/etc/env.php
       - name: "Installing with composer.."
         run: composer install
-      - name: "Installing Magento's setup.."
-        run: bin/magento setup:install
+      #- name: "Installing Magento's setup.."
+      #  run: bin/magento setup:install
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
       - name: "Compiling Magento's code.."
