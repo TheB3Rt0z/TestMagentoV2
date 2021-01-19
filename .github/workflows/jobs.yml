@@ -35,10 +35,12 @@ jobs:
         run: composer install --no-dev --no-progress
       - name: "Installing Magento's setup.."
         run: bin/magento setup:install --admin-firstname="local" --admin-lastname="local" --admin-email="local@local.com" --admin-user="local" --admin-password="local123" --base-url="http://magento.build/" --backend-frontname="admin" --db-host="mysql" --db-name="magento" --db-user="root" --db-password="magento" --use-secure=0 --use-rewrites=1 --use-secure-admin=0 --session-save="db" --currency="EUR" --language="en_US" --timezone="Europe/Rome" --cleanup-database --skip-db-validation
-      - name: "Upgrading Magento's setup.."
-        run: bin/magento setup:upgrade
+      #- name: "Upgrading Magento's setup.."
+        #run: bin/magento setup:upgrade
       - name: "Compiling Magento's code.."
         run: bin/magento setup:di:compile;
+      - name "Setting deploy mode.."
+        run: bin/magento deploy:mode:set --skip-compilation production
       - name: "Deploying static content.."
         run: bin/magento setup:static-content:deploy;
   phpcs:
