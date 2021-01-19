@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Building Magento 2
+    name: "Build & Sniff"
     runs-on: ubuntu-latest
     #services:
       #mysql:
