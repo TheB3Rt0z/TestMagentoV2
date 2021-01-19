@@ -39,10 +39,10 @@ jobs:
         #run: cp ./app/etc/env.php.tst ./app/etc/env.php | cat ./app/etc/env.php
       - name: "Installing with composer.."
         run: composer install --no-dev --no-progress
-      - name: "Installing Magento's setup.."
-        run: bin/magento setup:install --admin-firstname="test" --admin-lastname="test" --admin-email="test@test.tst" --admin-user="test" --admin-password="test000" --base-url="http://magento.test/" --backend-frontname="test" --db-host="mysql" --db-name="test" --db-user="root" --db-password="test" --use-secure=0 --use-rewrites=1 --use-secure-admin=0 --session-save="db" --currency="EUR" --language="en_US" --timezone="Europe/Rome" --skip-db-validation # --cleanup-database
-      - name: "Upgrading Magento's setup.."
-        run: bin/magento setup:upgrade
+      #- name: "Installing Magento's setup.."
+        #run: bin/magento setup:install --admin-firstname="test" --admin-lastname="test" --admin-email="test@test.tst" --admin-user="test" --admin-password="test000" --base-url="http://magento.test/" --backend-frontname="test" --db-host="mysql" --db-name="test" --db-user="root" --db-password="test" --use-secure=0 --use-rewrites=1 --use-secure-admin=0 --session-save="db" --currency="EUR" --language="en_US" --timezone="Europe/Rome" --skip-db-validation # --cleanup-database
+      #- name: "Upgrading Magento's setup.."
+        #run: bin/magento setup:upgrade
       - name: "Compiling Magento's code.."
         run: bin/magento setup:di:compile;
       - name: "Setting deploy mode.."
