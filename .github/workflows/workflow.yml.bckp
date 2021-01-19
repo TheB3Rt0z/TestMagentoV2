@@ -43,3 +43,5 @@ jobs: # can be executed parallely, if more than a single one..
   # workflow templates: [REPO_URL]/actions/new, templates code: https://github.com/actions/starter-workflows
     # https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/sharing-workflows-with-your-organization
   # about security: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/security-hardening-for-github-actions
+
+#https://github.com/MAD-I-T/magento-actions
