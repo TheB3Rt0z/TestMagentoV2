@@ -40,7 +40,7 @@ jobs:
       - name: "Installing with composer.."
         run: composer install --no-dev --no-progress
       - name: "Installing Magento's setup.."
-        run: bin/magento setup:install --admin-firstname="test" --admin-lastname="test" --admin-email="test@test.tst" --admin-user="test" --admin-password="test" --base-url="http://magento.test/" --backend-frontname="test" --db-host="mysql" --db-name="test" --db-user="root" --db-password="test" --use-secure=0 --use-rewrites=1 --use-secure-admin=0 --session-save="db" --currency="EUR" --language="en_US" --timezone="Europe/Rome" --cleanup-database --skip-db-validation
+        run: bin/magento setup:install --admin-firstname="test" --admin-lastname="test" --admin-email="test@test.tst" --admin-user="test" --admin-password="test000" --base-url="http://magento.test/" --backend-frontname="test" --db-host="mysql" --db-name="test" --db-user="root" --db-password="test" --use-secure=0 --use-rewrites=1 --use-secure-admin=0 --session-save="db" --currency="EUR" --language="en_US" --timezone="Europe/Rome" --cleanup-database --skip-db-validation
       - name: "Upgrading Magento's setup.."
         run: bin/magento setup:upgrade
       - name: "Compiling Magento's code.."
