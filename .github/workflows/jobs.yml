@@ -46,11 +46,11 @@ jobs:
       - name: "Enabling all modules.."
         run: bin/magento module:enable --all
       - name: "Compiling Magento's code.."
-        run: bin/magento setup:di:compile;
+        run: bin/magento setup:di:compile
       #- name: "Setting deploy mode.."
         #run: bin/magento deploy:mode:set --skip-compilation production
       - name: "Deploying static content.."
-        run: bin/magento setup:static-content:deploy;
+        run: bin/magento setup:static-content:deploy -f
   phpcs:
     name: PHP Code Sniffer    
     runs-on: ubuntu-latest
