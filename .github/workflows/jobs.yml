@@ -21,7 +21,7 @@ jobs:
       #run:
         #working-directory: .
     steps:
-      - name; "Setting up MySQL.."
+      - name: "Setting up MySQL.."
         uses: mirromutth/mysql-action@v1.1 # https://github.com/marketplace/actions/setup-mysql
         with:
           mysql version: '5.7'
