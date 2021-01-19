@@ -47,8 +47,8 @@ jobs:
         run: bin/magento module:enable --all
       - name: "Compiling Magento's code.."
         run: bin/magento setup:di:compile;
-      - name: "Setting deploy mode.."
-        run: bin/magento deploy:mode:set --skip-compilation production
+      #- name: "Setting deploy mode.."
+        #run: bin/magento deploy:mode:set --skip-compilation production
       - name: "Deploying static content.."
         run: bin/magento setup:static-content:deploy;
   phpcs:
