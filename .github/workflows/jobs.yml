@@ -51,5 +51,9 @@ jobs:
         #run: bin/magento deploy:mode:set --skip-compilation production
       #- name: "Deploying static content.."
         #run: bin/magento setup:static-content:deploy -f
+      - name: "Installing PHP CodeSniffer.."
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          php phpcs.phar --version
       - name: "PHP code sniffing.."
-        run: vendor/bin/phpcs app/ -s --colors --extensions=css,js,json,php,phtml
+        run: phpcs.phar app/ -s --colors --extensions=css,js,json,php,phtml
