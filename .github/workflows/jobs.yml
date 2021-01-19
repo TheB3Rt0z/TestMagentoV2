@@ -54,6 +54,5 @@ jobs:
       - name: "Installing PHP CodeSniffer.."
         run: |
           curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
-          php phpcs.phar --version
       - name: "PHP code sniffing.."
-        run: phpcs.phar app/ -s --colors --extensions=css,js,json,php,phtml
+        run: php phpcs.phar app/ -s --colors --extensions=css,js,json,php,phtml
