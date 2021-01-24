@@ -59,8 +59,8 @@ jobs:
         run: php phpcs.phar app/code/ -s --colors --extensions=css,js,json,php,phtml --standard=PEAR --exclude=Generic.PHP.DisallowShortOpenTag,Generic.Files.LineLength,PEAR.Commenting.ClassComment,PEAR.NamingConventions.ValidFunctionName,PEAR.NamingConventions.ValidVariableName
       - name: "PSR2 code standard.."
         run: php phpcs.phar app/code/ -s --colors --extensions=css,js,json,php,phtml --standard=PSR2
-      - name: "Magento2 code standard.."
-        run: php phpcs.phar app/code/ -s --colors --extensions=css,js,json,php,phtml --standard=vendor/magento/magento-coding-standard/Magento2/ruleset.xml --exclude=Generic.Files.LineLength,Generic.PHP.DisallowShortOpenTag,PEAR.Commenting.FileComment
+      #- name: "Magento2 code standard.."
+        #run: php phpcs.phar app/code/ -s --colors --extensions=css,js,json,php,phtml --standard=vendor/magento/magento-coding-standard/Magento2/ruleset.xml --exclude=Generic.Files.LineLength,Generic.PHP.DisallowShortOpenTag,PEAR.Commenting.FileComment
       - name: "PHP stan check.."
         run: vendor/bin/phpstan analyse --no-progress app/code/
       - name: "PHPunit DEV check.."
