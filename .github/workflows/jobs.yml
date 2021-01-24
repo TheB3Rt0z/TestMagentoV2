@@ -79,6 +79,7 @@ jobs:
           mysql root password: 'test'
       - name: "Setting up PHP.."
         uses: shivammathur/setup-php@v2
+        with:
           php-version: "7.4"
           tools: composer:v1
       - name: "Checkout repository.."
