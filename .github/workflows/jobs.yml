@@ -67,3 +67,33 @@ jobs:
         #run: ./vendor/bin/phpstan analyse --no-progress ./app/code/
       #- name: "PHPunit DEV check.."
         #run: ./vendor/bin/phpunit -c ./dev/tests/unit/phpunit.xml.dist
+  buildphp74:
+    name: "Build & Sniff PHP 7.4"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setting up MySQL.."
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: '5.7'
+          mysql database: 'test'
+          mysql root password: 'test'
+      - name: "Setting up PHP.."
+        uses: shivammathur/setup-php@v2
+          php-version: "7.4"
+          tools: composer:v1
+      - name: "Checkout repository.."
+        uses: actions/checkout@v2
+      - name: "Installing with composer.."
+        run: composer install --no-dev --no-progress
+      - name: "Enabling all modules.."
+        run: ./bin/magento module:enable --all
+      - name: "Compiling Magento's code.."
+        run: ./bin/magento setup:di:compile
+      - name: "Installing PHP CodeSniffer.."
+        run: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+      - name: "PHP code sniffing.."
+        run: php ./phpcs.phar ./app/code/ -s --colors --extensions=css,js,json,php,phtml
+      - name: "PEAR code standard.."
+        run: php ./phpcs.phar ./app/code/ -s --colors --extensions=css,js,json,php,phtml --standard=PEAR --exclude=Generic.PHP.DisallowShortOpenTag,Generic.Files.LineLength,PEAR.Commenting.ClassComment,PEAR.NamingConventions.ValidFunctionName,PEAR.NamingConventions.ValidVariableName
+      - name: "PSR2 code standard.."
+        run: php ./phpcs.phar ./app/code/ -s --colors --extensions=css,js,json,php,phtml --standard=PSR2
