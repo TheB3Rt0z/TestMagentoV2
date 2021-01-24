@@ -101,10 +101,16 @@
     },
     "scripts": {
 	    "post-install-cmd": [
-	      "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+	      "([ $COMPOSER_DEV_MODE -eq 0 ] || ./vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
 	    ],
 	    "post-update-cmd": [
-	      "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+	      "([ $COMPOSER_DEV_MODE -eq 0 ] || ./vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+	    ],
+	    "post-install-cmd-github": [
+	      "([ $COMPOSER_DEV_MODE -eq 0 ] || ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
+	    ],
+	    "post-update-cmd-github": [
+	      "([ $COMPOSER_DEV_MODE -eq 0 ] || ./vendor/squizlabs/php_codesniffer/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/)"
 	    ]
 	}
 }
