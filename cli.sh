@@ -20,13 +20,19 @@ if test $1 && test $1 == "mftf"; then
 fi
 
 if test $1 && test $1 == "pack-ipib"; then
-    cd app/code/Iways/PaypalInstalmentsBanners/;
-    zip -r iways_paypal-instalments-banners-$2.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+    MODULE="./app/code/Iways/PaypalInstalmentsBanners";
+    TARGET="./iways_paypal-instalments-banners-$2.zip";
+    cd $MODULE;
+    zip -r $TARGET . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+    mv $TARGET ../../../../$TARGET;
 fi
 
 if test $1 && test $1 == "pack-ippp"; then
-    cd app/code/Iways/PayPalPlus/;
-    zip -r iways_paypalplus-$2.zip . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+    MODULE="./app/code/Iways/PayPalPlus";
+    TARGET="./iways_paypalplus-$2.zip";
+    cd $MODULE;
+    zip -r $TARGET . -x './.git/*' '.gitignore' '.project' '*.md' '*.DS_Store';
+    mv $TARGET ../../../../$TARGET;
 fi
 
 if test $1 && test $1 == "sniff"; then
