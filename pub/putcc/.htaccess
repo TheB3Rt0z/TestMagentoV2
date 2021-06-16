@@ -1,0 +1,4 @@
+AuthUserFile /var/www/.htpasswd
+AuthType Basic
+AuthName "PHPUnit code coverage for PayPalPLUS"
+Require valid-user
